@@ -11,75 +11,97 @@ package modelo;
  */
 public class Filtro {
 
-    public int getId() {
+    public int getId(){
         return id;
     }
-
-    public void setId(int id) {
-        this.id = id;
+    
+    public void setId(int id){
+        this.id=id;
+    }
+    
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public void setNombre(String nombre) {
+        this.nombre = nombre ;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public String getClasificacion() {
+        return clasificacion;
     }
 
-    public String getMarca() {
-        return marca;
+    public void setClasificacion(String clasificacion) {
+        this.clasificacion = clasificacion;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public String getDirector() {
+        return director;
     }
 
-    public int getStock() {
-        return stock;
+    public void setDirector(String director) {
+        this.director=director;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public String getPais() {
+        return pais;
     }
 
-    public boolean getExistencia() {
-        return existencia;
+    public void setStock(String pais) {
+        this.pais = pais;
     }
 
-    public void setExistencia(boolean existencia) {
-        this.existencia = existencia;
+    public int getAnio() {
+        return anio;
+    }
+
+    public void setAnio(int anio) {
+        this.anio = anio;
+    }
+    
+    public boolean getProyeccion(){
+        return proyeccion;
+    }
+    
+    public void setProyeccion(boolean proyeccion){
+        this.proyeccion=proyeccion;
     }
     private int id;
-    private String codigo;
-    private String marca;
-    private int stock;
-    private boolean existencia;
-
+    private String nombre;
+    private String clasificacion;
+    private String pais;
+    private String director;
+    private int anio;
+    private boolean proyeccion;
+    
     public Filtro() {
     }
     
     
-    public Filtro(int id, String codigo, String marca, int stock, boolean existencia) {
-        this.id = id;
-        this.codigo = codigo;
-        this.marca = marca;
-        this.stock = stock;
-        this.existencia = existencia;
+    public Filtro(int id, int anio, String nombre, String clasificacion, String pais, String director, boolean proyeccion) {
+        this.id=id;
+        this.anio=anio;
+        this.nombre=nombre;
+        this.clasificacion=clasificacion;
+        this.pais=pais;
+        this.director=director;
+        this.proyeccion=proyeccion;
     }
 
-    public Filtro(String codigo, String marca, int stock, boolean existencia) {
-        this.codigo = codigo;
-        this.marca = marca;
-        this.stock = stock;
-        this.existencia = existencia;
+    public Filtro( int anio, String nombre, String clasificacion, String pais, String director, boolean proyeccion) {
+        this.anio=anio;
+        this.nombre=nombre;
+        this.clasificacion=clasificacion;
+        this.pais=pais;
+        this.director=director;
+        this.proyeccion=proyeccion;
     }
 
-    public Filtro(String marca, int stock, boolean existencia) {
+    /*public Filtro(String marca, int stock, boolean existencia) {
         this.marca = marca;
         this.stock = stock;
         this.existencia = existencia;
-    }
+    }*/
     
     
 }
