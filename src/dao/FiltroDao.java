@@ -21,7 +21,7 @@ import modelo.Filtro;
 public class FiltroDao implements metodos<Filtro>{
     
     private static final String SQL_INSERT = "INSERT INTO movie(nombre,director,pais,clasificacion,anio,en_proyeccion) VALUES (?,?,?,?,?,?)";
-    private static final String SQL_UPDATE = "UPDATE movie SET director = ?, pais = ?, clasificacion = ?, anio = ?, en_proyeccion=? WHERE nombre=?";
+    private static final String SQL_UPDATE = "UPDATE movie SET en_proyeccion=? WHERE nombre=?";
     private static final String SQL_DELETE = "DELETE FROM movie WHERE nombre=?";
     private static final String SQL_READ = "SELECT * FROM movie WHERE nombre=?";
     private static final String SQL_READALL = "SELECT * FROM movie";
@@ -76,12 +76,12 @@ public class FiltroDao implements metodos<Filtro>{
         try{
             System.out.println(c.getId());
             ps = con.getCnx().prepareStatement(SQL_UPDATE);
-            ps.setString(1, c.getNombre());
-            ps.setString(2, c.getDirector());
+            ps.setString(2, c.getNombre());
+            /*ps.setString(2, c.getDirector());
             ps.setString(3, c.getPais());
             ps.setString(4, c.getClasificacion());
-            ps.setInt(5,c.getAnio());
-            ps.setBoolean(6,c.getProyeccion());
+            ps.setInt(5,c.getAnio());*/
+            ps.setBoolean(1,c.getProyeccion());
             if(ps.executeUpdate() > 0){
                 return true;
             }

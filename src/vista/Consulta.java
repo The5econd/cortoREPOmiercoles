@@ -205,11 +205,11 @@ public class Consulta extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 FiltroDao fd = new FiltroDao();
-                Filtro f = new Filtro(nombre.getText(),director.getText(),pais.getText(),clasificacion.getSelectedItem().toString(),Integer.parseInt(anio.getText()),true);
+                Filtro f = new Filtro(nombre.getText(),director.getText(),pais.getText(),clasificacion.getSelectedItem().toString(),10,true);
                 if(no.isSelected()){
                     f.setProyeccion(false);
                 }
-                if(fd.create(f)){
+                if(fd.update(f)){
                     JOptionPane.showMessageDialog(null, "registrado con exito");
                     limpiarCampos();
                     llenarTabla();
