@@ -72,7 +72,7 @@ public class Consulta extends JFrame{
         container.add(eliminar);
         //container.add(limpiar);
         container.add(table);
-        setSize(1000,1000);
+        setSize(750,750);
         eventos();
         
     }
