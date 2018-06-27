@@ -25,7 +25,9 @@ public class Conexion {
     
     
     public synchronized static Conexion conectar(){
-        if(instance==null){return new Conexion();}
+        if(instance==null){
+            return new Conexion();
+        }
         return instance;
     }
     
@@ -49,7 +51,7 @@ public class Conexion {
         user = "root";
         pass = "";
         driver = "com.mysql.jdbc.Driver";
-        url = "jdbc:mysql://localhost/filtros";
+        url = "jdbc:mysql://localhost/cine";
     
     }
     public Connection getCnx(){

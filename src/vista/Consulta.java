@@ -27,7 +27,7 @@ import modelo.Filtro;
 
 /**
  *
- * @author LN710Q
+ * @author thesecond
  */
 public class Consulta extends JFrame{
     public JLabel lblNombre, lblClasificacion, lblDirector, lblPais,lblAnio,lblProyeccion;
@@ -40,13 +40,13 @@ public class Consulta extends JFrame{
     public JTable resultados;
     
     public JPanel table;
-    public JButton buscar, eliminar, insertar, actualizar;
+    public JButton buscar, eliminar, insertar, actualizar,limpiar;
     private static final int ANCHOC = 130, ALTOC = 30;
     
     DefaultTableModel tm;
     
     public Consulta(){
-        super("Inventario");
+        super("Cinepolix");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         agregarLabels();
@@ -60,6 +60,7 @@ public class Consulta extends JFrame{
         container.add(lblAnio);
         container.add(lblProyeccion);
         container.add(nombre);
+        container.add(clasificacion);
         container.add(director);
         container.add(pais);
         container.add(anio);
@@ -69,6 +70,7 @@ public class Consulta extends JFrame{
         container.add(insertar);
         container.add(actualizar);
         container.add(eliminar);
+        //container.add(limpiar);
         container.add(table);
         setSize(1000,1000);
         eventos();
@@ -106,7 +108,7 @@ public class Consulta extends JFrame{
         insertar=new JButton("insertar");
         eliminar=new JButton("eliminar");
         actualizar=new JButton("actualizar");
-        buscar=new JButton("buscar");
+        //buscar=new JButton("buscar");
         
         table = new JPanel();
         
@@ -151,6 +153,10 @@ public class Consulta extends JFrame{
                         return String.class;
                     case 2:
                         return String.class;
+                    case 3:
+                        return String.class;
+                    case 4:
+                        return String.class;
                     default:
                         return Boolean.class;
                 }
@@ -179,8 +185,10 @@ public class Consulta extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 FiltroDao fd = new FiltroDao();
-                Filtro f = new Filtro(Integer.parseInt(anio.getText()), nombre.getText(),clasificacion.getSelectedItem().toString(),pais.getText(),director.getText(),true);
-                if(no.isSelected()){f.setProyeccion(false);}
+                Filtro f = new Filtro(nombre.getText(),director.getText(),pais.getText(),clasificacion.getSelectedItem().toString(),Integer.parseInt(anio.getText()),true);
+                if(no.isSelected()){
+                    f.setProyeccion(false);
+                }
                 if(fd.create(f)){
                     JOptionPane.showMessageDialog(null, "registrado con exito");
                     limpiarCampos();
@@ -197,8 +205,10 @@ public class Consulta extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 FiltroDao fd = new FiltroDao();
-                Filtro f = new Filtro(Integer.parseInt(anio.getText()), nombre.getText(),clasificacion.getSelectedItem().toString(),pais.getText(),director.getText(),true);
-                if(no.isSelected()){f.setProyeccion(false);}
+                Filtro f = new Filtro(nombre.getText(),director.getText(),pais.getText(),clasificacion.getSelectedItem().toString(),Integer.parseInt(anio.getText()),true);
+                if(no.isSelected()){
+                    f.setProyeccion(false);
+                }
                 if(fd.create(f)){
                     JOptionPane.showMessageDialog(null, "registrado con exito");
                     limpiarCampos();
@@ -237,14 +247,15 @@ public class Consulta extends JFrame{
                     
                 }else{
                     nombre.setText(f.getNombre());
-                    director.setText(f.getDirector());
-                    pais.setText(f.getPais());
+                    //director.setText(f.getDirector());
+                    //pais.setText(f.getPais());
                     anio.setText(Integer.toString(f.getAnio()));
                     clasificacion.setSelectedItem(f.getClasificacion());
-                }if(f.getProyeccion()){
-                    si.setSelected(true);
-                }else{
-                    no.setSelected(true);
+                    if(f.getProyeccion()){
+                        si.setSelected(true);
+                    }else{
+                        no.setSelected(true);
+                    }
                 }
             }
         });
@@ -267,5 +278,13 @@ public class Consulta extends JFrame{
         director.setText("");
         pais.setText("");
         
+    }
+    public static void main(String[] args) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run(){
+                new Consulta().setVisible(true);
+            }
+        });
     }
 }

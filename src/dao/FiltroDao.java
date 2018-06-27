@@ -21,10 +21,10 @@ import modelo.Filtro;
 public class FiltroDao implements metodos<Filtro>{
     
     private static final String SQL_INSERT = "INSERT INTO movie(nombre,director,pais,clasificacion,anio,en_proyeccion) VALUES (?,?,?,?,?,?)";
-    private static final String SQL_UPDATE = "UPDATE movie SET en_proyeccion = ?, stock = ?, existencia = ? WHERE id=?";
-    private static final String SQL_DELETE = "DELETE FROM movie WHERE id=?";
-    private static final String SQL_READ = "SELECT * FROM movie WHERE id=?";
-    private static final String SQL_READALL = "SELECT * FROM filtros_aceite";
+    private static final String SQL_UPDATE = "UPDATE movie SET director = ?, pais = ?, clasificacion = ?, anio = ?, en_proyeccion=? WHERE nombre=?";
+    private static final String SQL_DELETE = "DELETE FROM movie WHERE nombre=?";
+    private static final String SQL_READ = "SELECT * FROM movie WHERE nombre=?";
+    private static final String SQL_READALL = "SELECT * FROM movie";
     private static final Conexion con = Conexion.conectar();
     
     @Override
@@ -107,7 +107,7 @@ public class FiltroDao implements metodos<Filtro>{
             rs = ps.executeQuery();
             
             while (rs.next()){
-                f = new Filtro(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getBoolean(7));
+                f = new Filtro(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getBoolean(7));
             }
             rs.close();
         } catch(SQLException ex){
@@ -127,7 +127,7 @@ public class FiltroDao implements metodos<Filtro>{
             s= con.getCnx().prepareStatement(SQL_READALL);
             rs= s.executeQuery(SQL_READALL);
             while(rs.next()){
-                all.add(new Filtro(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getBoolean(6)));
+                all.add(new Filtro(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getBoolean(7)));
                 
             }
             rs.close();

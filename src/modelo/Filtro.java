@@ -78,7 +78,7 @@ public class Filtro {
     }
     
     
-    public Filtro(int id, int anio, String nombre, String clasificacion, String pais, String director, boolean proyeccion) {
+    public Filtro(int id, String nombre,String director, String pais,String clasificacion,int anio, boolean proyeccion) {
         this.id=id;
         this.anio=anio;
         this.nombre=nombre;
@@ -88,7 +88,7 @@ public class Filtro {
         this.proyeccion=proyeccion;
     }
 
-    public Filtro( int anio, String nombre, String clasificacion, String pais, String director, boolean proyeccion) {
+    public Filtro(String nombre,String director, String pais,String clasificacion,int anio, boolean proyeccion) {
         this.anio=anio;
         this.nombre=nombre;
         this.clasificacion=clasificacion;
@@ -97,11 +97,13 @@ public class Filtro {
         this.proyeccion=proyeccion;
     }
 
-    /*public Filtro(String marca, int stock, boolean existencia) {
-        this.marca = marca;
-        this.stock = stock;
-        this.existencia = existencia;
-    }*/
+    public Filtro( String clasificacion, String pais, String director,int anio, boolean proyeccion) {
+        this.anio=anio;
+        this.clasificacion=clasificacion;
+        this.pais=pais;
+        this.director=director;
+        this.proyeccion=proyeccion;
+    }
     
     
 }
